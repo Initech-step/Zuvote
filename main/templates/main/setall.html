@@ -1,0 +1,18 @@
+{% extends "main/panel.html" %}
+{% load static %}
+
+  {% block title %}
+   Settings
+  {% endblock %}
+
+{% block content%}
+
+<main role="main" class="container">
+
+  {% for package in packages %}
+      <a href="{% url 'voting' %}"><button class="button button-primary button-md">{{ package.competition_name }}</button></a>
+  {% endfor %}
+
+</main>
+
+{% endblock %}

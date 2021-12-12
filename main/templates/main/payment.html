@@ -1,0 +1,21 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+<main role="main" class="container">
+  <div class="jumbotron">
+    <h1>Vote !</h1>
+  </div>
+
+    <form class="form-signin" method="post" action="">
+         {% csrf_token %}
+         {{ form|crispy }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Vote</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2021-2022</p>
+    </form>
+
+</main>
+
+{% endblock %}

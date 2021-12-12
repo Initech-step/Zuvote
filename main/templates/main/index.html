@@ -1,0 +1,14 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content%}
+
+<main role="main" class="container">
+  <div class="jumbotron">
+    <h1>Welcome to Zuvote</h1>
+    <p class="lead">We are a paid online voting platform poised to render our services via helping you start and manage paid online voting competions</p>
+    <a class="btn btn-lg btn-primary" href="{% url 'register' %}" role="button">Sign Up &raquo;</a>
+  </div>
+</main>
+
+{% endblock %}

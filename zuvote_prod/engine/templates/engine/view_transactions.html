@@ -1,0 +1,36 @@
+{% extends 'engine/base_panel.html' %}
+{% block content %}
+{% load static %}
+
+<section class="">
+    <div class="container">
+        <div class="row">
+            <h5 class="text-center">Transactions</h5>
+
+            {% if messages %}
+                {% for message in messages %}
+                <h4 class='text-zuvote'>{{ message }}</h4>
+                {% endfor %}
+            {% endif %}
+
+            {% for transaction in transactions %}
+
+                <div class="col-lg-6 col-12 col-md-6 col-sm-12 col-xl-4">
+                    <div class="p-3 zuvote-orange m-3">
+                            <p class="text-white"><b>Contestant: </b>{{ transaction.contestant }}</p>
+                            <p class="text-white"><b>Number of Votes: </b>{{ transaction.number_of_votes }}</p>
+                            <p class="text-white"><b>Amount (in kobo): </b>{{ transaction.amount }}</p>
+                            <p class="text-white"><b>Verified: </b>{{ transaction.verified }}</p>
+                            <p class="text-white"><b>Reference: </b>{{ transaction.ref }}</p>
+
+                    
+                    </div>                     
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>  
+</section>
+
+
+{% endblock %}

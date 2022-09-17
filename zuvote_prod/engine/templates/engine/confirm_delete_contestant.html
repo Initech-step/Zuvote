@@ -1,0 +1,23 @@
+{% extends 'engine/base_panel.html' %}
+{% block content %}
+{% load static %}
+
+<section>
+<div class="text-center">
+	<h4 class="text-danger">Sure you want to delete ?</h3>
+	<p class='lead'>{{ contestant.contestant_name }}</p>
+	<p class='lead'>{{ contestant.contestant_code }}</p>
+
+    <form action="{% url 'delete_contestant' contestant.id %}" method='post'>
+    {% csrf_token %}
+    <button type='submit' class='btn btn-md btn-outline-danger'>Delete</button>
+    </form>
+    
+    <br>
+    <a class='btn btn-md text-white zuvote-orange' href="{% url 'view_all_contestants' %}" >Cancel</a>
+
+</div>
+</section>
+
+
+{% endblock %}

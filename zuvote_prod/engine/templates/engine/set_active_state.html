@@ -1,0 +1,27 @@
+{% extends 'engine/base_panel.html' %}
+{% block content %}
+{% load static %}
+
+<section>
+<div class="container">
+    <div class='row justify-content-center'>
+        <div class='col-12 col-lg-5 col-md-8'>
+
+            <h4 class="text-zuvote">Set competition access state</h3>
+            <p class='text-muted'> This determines if people can visit your competition page and begin voting</p>
+            <p class='lead'><b>Competition Name:</b> {{ competition_details.Competition_name }}</p>
+            <p class='lead'><b>Competition Public code:</b> {{ competition_details.unique_competition_code }}</p>
+            <p class='lead'><b>Competition Public code:  </b>{{ state }}</p>
+
+            <form method='post' action=''>
+                {% csrf_token %}
+                <input class='btn text-white btn-lg zuvote-orange' type='submit' value="Change state">
+            </form>
+
+        </div>
+    </div>  
+</div>
+</section>
+
+
+{% endblock %}

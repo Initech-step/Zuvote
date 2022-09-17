@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Your management panel</title>
+
+    <!--Off canvas CSS File--->
+    <link rel="stylesheet" href="{% static 'general/css/offcanvas.css' %}">
+
+    <!--Bootstrap csss and icon cdn links-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="icon" href="{% static 'general/images/zuvote_log_dark.jpg' %}" type="image/png" sizes="16x16">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <style type="text/css">
+        .zuvote-orange{
+            background-color: #f58320;
+        }
+        .logo-resize{
+            width: 55px;
+        }
+        .home-margin{
+            margin-top: 90px;
+        }
+
+        .text-zuvote{
+            color: #f58320;
+        }
+    </style>
+
+  </head>
+
+
+<body class="bg-light">
+    
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">ZUVOTE</a>
+    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'panel' %}">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout_page' %}">Log Out</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Competition</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown02">
+            <li><a class="dropdown-item" href="{% url 'create_competition' %}">Create Competition</a></li>
+            <li><a class="dropdown-item" href="{% url 'set_managing' %}">Set Currently managing</a></li>
+            <li><a class="dropdown-item" href="{% url 'set_active_state' %}">Set active state</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Contestant</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown03">
+            <li><a class="dropdown-item" href="{% url 'add_contestant' %}"> Add Contestant</a></li>
+            <li><a class="dropdown-item" href="{% url 'view_all_contestants' %}">Edit or Delete Contestants</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Votes</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown04">
+            <li><a class="dropdown-item" href="{% url 'view_transactions' %}">View Transactions</a></li>
+            <li><a class="dropdown-item" href="{% url 'view_stat' %}">View Contestants performance</a></li>
+            <li><a class="dropdown-item" href="{% url 'voting_preview' %}">Visit Voting Page</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Withdrawal</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown01">
+            <li><a class="dropdown-item" href="{% url 'take_pay' %}">Request for withdrawal</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <button class="btn btn-outline-success" type="submit">{{ competition_currently_managed }}</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+<main class="container">
+  <div class="d-flex align-items-center p-3 my-3 text-white zuvote-orange rounded shadow-sm">
+    <img class="me-3" src="{% static 'general/images/zuvote_log_dark.jpg' %}" alt="" width="50" height="50">
+    <div class="lh-1">
+      <h1 class="h6 mb-0 text-white lh-1">Your paid votes management panel</h1>
+      <small>-- {{ info }} --</small>
+    </div>
+  </div>
+
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+    {% block content %}
+    {% endblock %}
+  </div>
+</main>
+
+<script type="text/javascript">
+  (function () {
+  'use strict'
+
+  document.querySelector('#navbarSideCollapse').addEventListener('click', function () {
+    document.querySelector('.offcanvas-collapse').classList.toggle('open')
+  })
+})()
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+
+  </body>
+</html>

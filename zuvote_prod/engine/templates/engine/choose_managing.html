@@ -1,0 +1,32 @@
+
+
+{% extends 'engine/base_panel.html' %}
+{% block content %}
+{% load static %}
+
+<section>
+<div class="text-center">
+
+   {% if messages %}
+        {% for message in messages %}
+        <h4 class='text-zuvote'>{{ message }}</h4>
+        {% endfor %}
+    {% endif %}
+
+	<h5 class="text-muted">Kindly choose the competition you wish to manage</h5>
+
+    <div class='container'>
+        <div class='row'>
+            {% for competition in competitions %}
+                <div class='col-12 col-lg-6 col-md-6 mt-3'>
+                    <a href="{% url 'set_managing_b' competition.Competition_slug %}" class='btn btn-md zuvote-orange text-white'>{{ competition.Competition_name }}</a>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+</section>
+
+
+{% endblock %}

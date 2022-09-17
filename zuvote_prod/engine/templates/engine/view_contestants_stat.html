@@ -1,0 +1,39 @@
+{% extends 'engine/base_panel.html' %}
+{% block content %}
+{% load static %}
+
+<section class="">
+    <div class="container">
+            <h4 class="text-center text-zuvote">See contestants performance</h4>
+
+            {% if messages %}
+                {% for message in messages %}
+                <h4 class='text-zuvote'>{{ message }}</h4>
+                {% endfor %}
+            {% endif %}
+
+            <table class="table table-sm table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Contestant name</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Number of votes</th>
+                   </tr>
+                </thead>
+
+                <tbody>
+                    {% for contestant in contestants %}
+                        <tr>
+                            <td>{{ contestant.contestant_name }}</td>
+                            <td>{{ contestant.contestant_code }}</td>
+                            <td>{{ contestant.number_of_votes }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+    </div>  
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'engine/base_panel.html' %}
+{% block content %}
+{% load static %}
+
+<section class="">
+    <div class="container">
+        <div class="row">
+            <h3 class="text-center">See all contestants</h3>
+
+            {% if messages %}
+                {% for message in messages %}
+                <h4 class='text-zuvote'>{{ message }}</h4>
+                {% endfor %}
+            {% endif %}
+
+
+            {% for contestant in contestants %}
+
+                <div class="col-lg-6 col-12 col-md-6 col-sm-12 col-xl-4">
+                        <div class="p-3 zuvote-orange m-3">
+                            <p class="text-white">{{ contestant.contestant_name }}</p>
+
+                            <p class="text-white fw-bold lead"><span>{{ contestant.contestant_code }}</p>
+
+                            <a href="{% url 'delete_contestant' contestant.id %}" class="text-white btn btn-md btn-dark m-2">Delete</a>
+
+                            <a href="{% url 'edit_contestant' contestant.id %}" class="btn btn-md text-white btn-dark m-2">Edit</a>
+                        </div>                     
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>  
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    }
+
+    @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+    }
+</style>
+ <link rel="stylesheet" href="{% static 'general/css/heroes.css' %}">
+
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-3 fw-bold text-zuvote"><img src="{% static 'general/images/zuvote_log_dark.jpg' %}" height="55px" width="50px">  Zuvote</h1>
+
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4"> Zuvote is a software (tool) created to help pageantry or paid voting managers to organize and manage their various competitions or pageantries with ease and comfort. We are ready to serve you!</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <a type="button" href="{% url 'register' %}" class="btn zuvote-orange btn-lg px-4 me-sm-3 text-white">Register (Sign up)</a>
+        <a type="button" href="{% url 'login_zuvote' %}" class="btn btn-outline-secondary btn-lg px-4">Log in</a>
+      </div>
+    </div>
+
+    <div class="overflow-hidden" style="max-height: 30vh;">
+      <div class="container px-5">
+        <img src="{% static 'general/images/zuvote clips.jpg' %}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+

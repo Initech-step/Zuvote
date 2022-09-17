@@ -1,0 +1,31 @@
+{% extends 'engine/base_panel.html' %}
+{% block content %}
+{% load static %}
+
+<section>
+<div class="text-center">
+	<h4 class="text-zuvote">Your Voting page Url</h3>
+    <p class='text-danger' id='show'></p>
+
+    <input type='text' value='http://127.0.0.1:8000/voting/voting_page/{{ pack }}' id='myLink' size="50"/>
+    <br>
+    <br>
+    <button class='btn btn-md zuvote-orange text-white' onclick='copy_url()'>Copy Url</button>
+    
+    <script>
+
+        function copy_url() {
+            var copy_text = document.getElementById('myLink');
+            copy_text.select();
+            document.execCommand('copy');
+            document.getElementById('show').innerText = 'Url Copied';
+
+        }
+
+    </script>
+	
+</div>
+</section>
+
+
+{% endblock %}
